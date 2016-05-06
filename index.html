@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>JS Style Guide</title>
+<script src="js/prettify.js"></script>
+<script src="js/main.js"></script>
+<link href="styles/prettify.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="styles/main.css">
+<link rel="stylesheet" href="styles/default.min.css">
+</head>
+<body> 
+<div class="wrapper">
+	<h1 class="heading">JavaScript Best Coding Practices Style Guide</h1>
+	<div id="content">
+		<div id="leftbar"></div>
+		<div id="rightbar">
+			<h2 class="firstHeading">Naming</h2>
+			<div class="hr"></div>
+			<h3>General Rules</h3>
+			<ul class="ul">
+				<li>When naming variables and functions, try to give those a meaningful title for better understanding and readability.</li>
+				<pre class="details-body-pre bad"><code class="details-body-code prettyprint lang-js">var nmEr;			//Bad <br/>var ooooo; <br/>function count(){};<br/></code></pre>
+				
+				<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">var variableNamesLikeThis;    //Good<br/>functionNamesLikeThis</br>methodNamesLikeThis    </br></code></pre>
+				<li>When naming variables, functions and methods, please apply ‘camel-case’ notations, e.g.:</li>
+			</ul>
+			<h3>Class Properties and Methods Naming</h3>
+			<ul class="ul">
+				<li>Private variables, properties and private methods in class declaration should be named with a trailing underscore: </li>
+				<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">function className() {		//Good<br/>    var d = document;<br/>};<br/></code></pre>
+			</ul>
+			<h3>Methods and Function Parameters</h3>
+			<ul class="ul">
+				<li>Optional function arguments start with <span class="bits">opt_.</span></li>
+				<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">function f(size1, opt_size2) { <br/>    var args = arguments;<br/>    if (arguments.length === 2) {<br/>   return function () {</br>            return args[0] * args[1];<br/>        }<br/>    } else {<br/>        return function () {<br/>            return args[0];<br/>        }<br/>    }<br/>};<br/></code></pre>
+			</ul>
+			<h3>Alias Long Type Names To Improve Readability</h3>
+				<ul class="ul">
+					<li>It is recommended you should use local aliases while addressing an object’s property by its full path-name. It is best to match the last part of the type for the local variable names:</li>
+						<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">some.long.namespace.MyClass = function() {<br/>};<br>myapp.main = function() {<br/>    var MyClass = some.long.namespace.MyClass;<br/>    var staticHelper = MyClass.staticHelper;<br/>    staticHelper(new MyClass());</br>};<br/></code></pre>
+					<li>You should not use alias for namespaces:</li>
+						<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">myapp.main = function() {<br/>var MyClass = some.long.namespace.MyClass;	// Good<br/>};<br/></code></pre>
+						<pre class="details-body-pre bad"><code class="details-body-code prettyprint lang-js">myapp.main = function() {<br/>var namespace = some.long.namespace;		// Bad<br/>};<br/></code></pre>
+			</ul>
+			<h3>Naming Functions as Constructors</h3>
+			<ul class="ul">
+				<li>The first letter in a function name must be uppercased if the function is a constructor. This helps to distinguish constructors (classes) from regular functions. The technique is described in the base style guide.</li>
+				<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">function ClassName() { ... } //Good</code></pre>
+			</ul>
+			<h2 class="firstHeading">Code Formatting</h2>
+			<div class="hr"></div>
+			<h3>Code Length Limitations</h3>
+			<ul class="ul"><li>Please observe 80 symbols line limitations, when writing your code.</li></ul>
+			<h3>Boolean Values Fromatting</h3>
+			<ul class="ul"><li>A Boolean variable declaration and definition with condition evaluation:</li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">var isConditionSatisfied =<br/>    ((isGood || isNice) &&<br/>     !isBad);</br></code></pre>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">var hasA =<br/>    ((isA || isB) &&<br/>     !isC);<br/></code></pre>
+			</ul>
+			<h3>Brackets</h3>
+			<ul class="ul">
+			<li>Because of implicit semicolon insertion, always start your curly brackets on the same line as whatever they're opening and the closing curly bracket – on the next line, respectively.</li>
+			<br/>
+			<li>No spaces inside the brackets of the if-statement is nice-to-have.</li>
+			<br/>
+			<li>If you decide to employ  <span class="bits">else</span>  or  <span class="bits">else if</span> conditional statements, please note that  <span class="bits">else</span> goes on the same line as the closing curly brace of the opening if-statement.</li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">if (something) {<br/>    ...</br>} else {<br/>    ...<br/>}<br/></code></pre>
+			<li>Example of a simpler condition placed on one line: brackets enclosure of conditions makes code more readable.</li> 
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">// Start boolean variables' names with is or has:</br> var hasChildren = (element.childNodes.length > 0);</br></code></pre>
+			</ul>
+			<h3>'For' Loops</h3>
+			<ul class="ul">
+			<li>Please note single spaces in-between reserved words, parenthesis and operators when using for loops. Other loops follow the same rule:</li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">for (i = 0; i < collectionLength; i++) {<br/>    ...<br/>}<br/></code></pre>
+			</ul>
+			<h3>Strings</h3>
+			<ul class="ul">
+			<li>Please split long strings into separate lines with a dangling plus (concatenation) sign:</li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">var myFunkyHtml =   '"Slartibartfast" <fjordmaster@magrathea.com>, ' +</br>    '"Zaphod Beeblebrox" <theprez@universe.gov>, ' +<br/>    '"Ford Prefect" <ford@theguide.com>, ' +</br>    '"Arthur Dent" <has.no.tea@gmail.com>, ' +</br>    '"Marvin the Paranoid Android" <marv@googlem-ail.com>, ' +</br>    'the.mice@magrathea.com';</br></code></pre>
+			</ul>
+			<h3>Optional Arguments Use, Optional Variables Redefinition Safeguards</h3>
+			<ul class="ul">
+			<li>Please note the bad example of optional variable usage with commented explanation within the snippet:</li>
+			<pre class="details-body-pre bad"><code class="details-body-code prettyprint lang-js">function operateWithWindow(opt_window) {</br>  if (arguments.length < 1) {</br>    opt_window = window;</br>  }</br>  // Operating with window through opt_window is confusing because use of the</br>  // optional argument is expected.</br>  ...</br>}<br/></code></pre>
+			<li>Please consider good example for proper optional variable usage with verification of the number of passed arguments:</li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">function operateWithWindow(opt_targetWindow) {</br>  var targetWindow = (arguments.length < 1) ? window : opt_targetWindow;</br>  ...</br>}</br></code></pre>
+			</ul>
+			<h3>Array And Object Initializers</h3>
+			<ul class="ul">
+			<li>Single-line array and object initializers are allowed when they fit on a line:</li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">var arr = [1, 2, 3];			// No space after [ or before ]</br>var obj = {a: 1, b: 2, c: 3};		// No space after { or before }</code></pre>
+			<li>Multi-line array initializers and object initializers are indented 2 spaces, just like blocks:</li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">// Object initializer<br/>var inset = {<br/>  top: 10,</br>  right: 20</br>  bottom: 15,<br/>  left: 12</br>};<br/></code></pre>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">// Array initializer.<br/>this.rows = [<br/>  '"Slartibartfast" <fjordmaster@magrathea.com>',<br/>  '"Zaphod Beeblebrox" <theprez@universe.gov>',<br/>  '"Ford Prefect" <ford@theguide.com>',<br/>  '"Arthur Dent" <has.no.tea@gmail.com>',<br/>  '"Marvin the Paranoid Android" <marv@googlemail.com>',<br/>  'the.mice@magrathea.com'</br>];<br/></code></pre>
+			</ul>
+			<h3>Function Declaration</h3>
+			<ul class="ul">
+			<li>It is recommended to omit a white space between the reserved word ‘function’ (or its name) and its parenthesis</li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">var f = function() {<br/>    var something = 100;  <br/>    return something; <br/>}<br/></code></pre>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">function f() {<br/>    var something = 100;<br/>    return something;<br/>}<br/></code></pre>
+			</ul>
+			<h3>Function Arguments</h3>
+			<ul class="ul">
+			<li>Lengthy function arguments should be listed individually on separate lines</li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">// Four-space, one argument per line.  Works with long function names,<br/>// survives renaming, and emphasizes each argument.<br/>var doThingThatIsVeryDifficultToExplain = function(<br/>    veryDescriptiveArgumentNumberOne,<br/>    veryDescriptiveArgumentTwo,<br/>    tableModelEventHandlerProxy,<br/>    artichokeDescriptorAdapterIterator) {<br/>    ...<br/>};<br/></code></pre>
+			<li>If a function is a nested argument for the called function, indentation is equal to 2 spaces:</li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">setTimeout(function() {<br/>  console.log('Function called');<br/>}, 0);<br/></code></pre>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">var names = prefix.something.myExcellentMapFunction(<br/>    verboselyNamedCollectionOfItems,<br/>    function(item) {<br/>      return item.name;<br/>    });<br/></code></pre>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">var styleElement = createStyleElement([<br/>  createCssRule('#content', {<br/>    visibility: 'hidden'<br/>  }),<br/>  createCssRule('#sidebar', {<br/>    display: 'none'<br/>  })<br/>].join('\n'));<br/></code></pre>
+			</ul>
+			<h3>More on Indentation</h3>
+			<ul class="ul">
+			<li>All wrapped lines should be indented four spaces, except for arrays, object initializers and nested (anonymous) functions.</li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">thisIsAVeryLongVariableName =<br/>    hereIsAnEvenLongerOtherFunctionNameThatWillNotFitOnPrevLine();<br/></code></pre>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">thisIsAVeryLongVariableName = 'expressionPartOne' + someMethodThatIsLong() +<br/>    thisIsAnEvenLongerOtherFunctionNameThatCannotBeIndentedMore();<br/></code></pre>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">someValue = this.foo(<br/>    shortArg,<br/>    'Some really long string arg - this is a pretty common case, actually.',<br/>    shorty2,<br/>    this.bar());<br/></code></pre>
+			</ul>
+			<h3>Formatting Conditionals</h3>
+			<ul class="ul">
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">if (searchableCollection(allYourStuff).contains(theStuffYouWant) &&<br/>    !ambientNotification.isActive() && (client.isAmbientSupported() ||<br/>    client.alwaysTryAmbientAnyways())) {<br/>  ambientNotification.activate();<br/>}<br/></code></pre>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">if ((foo !== 'bar' &&<br/>     bar !== 'baz) &&<br/>    qux === 'foo') {<br/>}<br/></code></pre>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">if (a && b && c) {<br/>    ...<br/>}<br/></code></pre>
+			</ul>
+			<h3>Commenting</h3>
+			<ul class="ul">
+			<li>Commenting arguments is optional; however, they do improve readability, because in most cases function signature is not near the function call.</li>
+			<li>Please try not to break your code blocks by excessive commenting.</li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">requestContentGeneratorAsync('landing-page', function() {	// Success callback.<br/>  console.log('Request successfully complete.');<br/>}, 3000, function() {						// Timeout, Time-out callback.<br/>  console.log('No response within 3 seconds.');<br/>});<br/></code></pre>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">callFunctionWhenConditionSatisfied(function() {		// When content arrives.<br/>  console.log('Content arrived');<br/>}, function() {						// Has content arrived?<br/>  return (document.getElementById('content') !== null);<br/>}, 100);					        // Check interval.<br/></code></pre>
+			</ul>
+			<h3>Explicit Calls</h3>
+			<ul class="ul">
+			<li>Please, try to write explicit and clear code:</li>
+			<pre class="details-body-pre bad"><code class="details-body-code prettyprint lang-js">// Implicit behavior is not recommended:<br/>var string = ['foo', 'bar', 'baz'].join();  //Implicitly called comma can confuse other dev(s)<br/></code></pre>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">var string = ['foo', 'bar', 'baz'].join(',');<br/></code></pre>
+			<pre class="details-body-pre bad"><code class="details-body-code prettyprint lang-js">doThis() || doThat();				// Bad<br/></code></pre>
+			</ul>
+			<h3>Access Operator Code Formatting</h3>
+			<ul class="ul">
+			<li>Example of object’s property access operator formatting: placing the dot on a previous line and the accessed property - on the next for lengthy methods:<br/></li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">var element = jQuery('#very-very-very-very-very-long-identifier').<br/>    prop({</br>      target: '_blank',<br/>      title: 'Will be opened in a new tab/window.'<br/>    }).<br/>    css({<br/>      display: 'inline-block',<br/>      'margin-top': '10px',<br/>      'padding-bottom': 0<br/>    }).<br/>    text('Buy now');<br/></code></pre>
+			<li>Example for logically grouping function calls that are working with one and the same element; function calls for the other elements are placed on a separate line:</li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">jQuery('#foo').addClass('bar').        // Get #foo and add .bar class to it.<br/>    parent().hide().                   // Get parent of #foo, and hide it.<br/>    next('.baz').show().               // Get .baz next to the parent, and show it.<br/>    prev('.qux').appendTo('#footer');  // And so on...<br/></code></pre>
+			</ul>
+			<h3>Using Arrays to Form Complex Arguments:</h3>
+			<ul class="ul">
+			<li>You can use arrays to build complex structures like the one shown on the example below:</li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">jQuery([<br/>  '#very-very-very-very-long-identifier',<br/>  '#another-very-very-very-very-long-identifier',<br/>  '#and-one-more-very-very-very-very-long-identifier'<br/>].join(',')).each(function() {<br/>  // ...<br/>});<br/></code></pre>
+			</ul>
+			<h3>Condition Evaluation in Return Statements</h3>
+			<ul class="ul">
+			<li>Good examples of conditional  evaluation as a ‘return’ statement:</li>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">function doSomething() {<br/>  return ((isGood || isNice) &&<br/>          !isBad);<br/>}<br/></code></pre>
+			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">function doSomething() {<br/>  var isSuccessful =<br/>      ((isGood || isNice) &&<br/>       !isBad);<br/>  return isSuccessful;<br/>}<br/></code></pre>
+			<li>Bad example of conditional  evaluation as a ‘return’ statement:</li>
+			<pre class="details-body-pre bad"><code class="details-body-code prettyprint lang-js">function doSomething() { <br/>  return // Ignores lines after the statement, returns undefined.<br/>      ((isGoog || isNice) &&<br/>       !isBad);<br/>}<br/></code></pre>
+			</ul>
+		</div>
+		<div style="clear: both"></div>
+	</div>
+</div>
+<div id="footer">
+	<div class="wrapper">
+		<div id="copyright">
+			<span><br/></span>
+		</div>
+		<div id="contact"></div>
+		<br style="clear: both" />
+	</div>
+</div>
+</body>
+</html>
