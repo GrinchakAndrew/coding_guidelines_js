@@ -22,7 +22,7 @@
 				<pre class="details-body-pre bad"><code class="details-body-code prettyprint lang-js">var nmEr;			//Bad <br/>var ooooo; <br/>function count(){};<br/></code></pre>
 				
 				<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">var variableNamesLikeThis;    //Good<br/>functionNamesLikeThis</br>methodNamesLikeThis    </br></code></pre>
-				<li>When naming variables, functions and methods, please apply ‘camel-case’ notations, e.g.:</li>
+				<li>When naming variables, functions and methods, please apply 'camel-case' notations, e.g.:</li>
 			</ul>
 			<h3>Class Properties and Methods Naming</h3>
 			<ul class="ul">
@@ -36,7 +36,7 @@
 			</ul>
 			<h3>Alias Long Type Names To Improve Readability</h3>
 				<ul class="ul">
-					<li>It is recommended you should use local aliases while addressing an object’s property by its full path-name. It is best to match the last part of the type for the local variable names:</li>
+					<li>It is recommended you should use local aliases while addressing an object's property by its full path-name. It is best to match the last part of the type for the local variable names:</li>
 						<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">some.long.namespace.MyClass = function() {<br/>};<br>myapp.main = function() {<br/>    var MyClass = some.long.namespace.MyClass;<br/>    var staticHelper = MyClass.staticHelper;<br/>    staticHelper(new MyClass());</br>};<br/></code></pre>
 					<li>You should not use alias for namespaces:</li>
 						<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">myapp.main = function() {<br/>var MyClass = some.long.namespace.MyClass;	// Good<br/>};<br/></code></pre>
@@ -94,7 +94,7 @@
 			</ul>
 			<h3>Function Declaration</h3>
 			<ul class="ul">
-			<li>It is recommended to omit a white space between the reserved word ‘function’ (or its name) and its parenthesis</li>
+			<li>It is recommended to omit a white space between the reserved word 'function' (or its name) and its parenthesis</li>
 			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">var f = function() {<br/>    var something = 100;  <br/>    return something; <br/>}<br/></code></pre>
 			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">function f() {<br/>    var something = 100;<br/>    return something;<br/>}<br/></code></pre>
 			</ul>
@@ -136,7 +136,7 @@
 			</ul>
 			<h3>Access Operator Code Formatting</h3>
 			<ul class="ul">
-			<li>Example of object’s property access operator formatting: placing the dot on a previous line and the accessed property - on the next for lengthy methods:<br/></li>
+			<li>Example of object's property access operator formatting: placing the dot on a previous line and the accessed property - on the next for lengthy methods:<br/></li>
 			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">var element = jQuery('#very-very-very-very-very-long-identifier').<br/>    prop({</br>      target: '_blank',<br/>      title: 'Will be opened in a new tab/window.'<br/>    }).<br/>    css({<br/>      display: 'inline-block',<br/>      'margin-top': '10px',<br/>      'padding-bottom': 0<br/>    }).<br/>    text('Buy now');<br/></code></pre>
 			<li>Example for logically grouping function calls that are working with one and the same element; function calls for the other elements are placed on a separate line:</li>
 			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">jQuery('#foo').addClass('bar').        // Get #foo and add .bar class to it.<br/>    parent().hide().                   // Get parent of #foo, and hide it.<br/>    next('.baz').show().               // Get .baz next to the parent, and show it.<br/>    prev('.qux').appendTo('#footer');  // And so on...<br/></code></pre>
@@ -148,10 +148,10 @@
 			</ul>
 			<h3>Condition Evaluation in Return Statements</h3>
 			<ul class="ul">
-			<li>Good examples of conditional  evaluation as a ‘return’ statement:</li>
+			<li>Good examples of conditional  evaluation as a 'return' statement:</li>
 			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">function doSomething() {<br/>  return ((isGood || isNice) &&<br/>          !isBad);<br/>}<br/></code></pre>
 			<pre class="details-body-pre good"><code class="details-body-code prettyprint lang-js">function doSomething() {<br/>  var isSuccessful =<br/>      ((isGood || isNice) &&<br/>       !isBad);<br/>  return isSuccessful;<br/>}<br/></code></pre>
-			<li>Bad example of conditional  evaluation as a ‘return’ statement:</li>
+			<li>Bad example of conditional  evaluation as a 'return' statement:</li>
 			<pre class="details-body-pre bad"><code class="details-body-code prettyprint lang-js">function doSomething() { <br/>  return // Ignores lines after the statement, returns undefined.<br/>      ((isGoog || isNice) &&<br/>       !isBad);<br/>}<br/></code></pre>
 			</ul>
 		</div>
